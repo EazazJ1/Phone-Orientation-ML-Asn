@@ -7,14 +7,16 @@ Points::Points()
 	this->y = 0;
 	this->z = 0;
 	this->orientation = 0;
+	this->distance = 0;
 }
 
-Points::Points(double x, double y, double z, int orientation)
+Points::Points(double x, double y, double z, int orientation, int distance)
 {
 	this->x = x;
 	this->y = y;
 	this->z = z;
 	this->orientation = orientation;
+	this->distance = distance;
 }
 
 double Points:: getx()
@@ -67,6 +69,11 @@ void Points::setOrientation(int orientation)
 	this->orientation = orientation;
 }
 
+void Points::printSingle()
+{
+	cout << this->getx() << ", " << this->gety() << ", " << this->getz() << ", " << this->getOrientation() << endl;
+}
+
 bool comparison(Points a, Points b)
 {
 	return (a.getDistance() < b.getDistance());	
@@ -92,11 +99,7 @@ void nearestNeighbour(Points array[], Points* p, int k, int count)
 
 	sort(array, array + count, comparison);
 
-	/*for (int i = 0; i < 175; i++)
-	{
-		cout << array[i].getx() << ", " << array[i].gety() << ", " << array[i].getz() << ", " << array[i].getOrientation() << endl;
-	}*/
-	
+		
 	int count1 = 0;
 	int count2 = 0;
 	int count3 = 0;
@@ -132,9 +135,9 @@ void nearestNeighbour(Points array[], Points* p, int k, int count)
 		}
 	}
 
-	int countArray[6] = { count1, count2, count3, count4, count5, count6 };
+	int countArray[NUM_CHOICES] = { count1, count2, count3, count4, count5, count6 };
 	
-	sort(countArray, countArray + 6);
+	sort(countArray, countArray + NUM_CHOICES);
 
 	if (countArray[5] == count1)
 	{
@@ -163,3 +166,130 @@ void nearestNeighbour(Points array[], Points* p, int k, int count)
 
 
 }
+
+int loadTraining(string filename, Points array[])
+{
+	ifstream fin;
+	int countTraining = 0;
+	fin.open(filename);
+	if (fin.is_open())
+	{
+		int i = 0;
+
+		while (!fin.eof())
+		{
+			string line;
+			getline(fin, line);
+			string x;
+			istringstream isLine(line);
+			getline(isLine, x, ',');
+
+			string y;
+
+			getline(isLine, y, ',');
+
+			string z;
+
+			getline(isLine, z, ',');
+
+			string O;
+
+			getline(isLine, O, ',');
+
+
+			/*stringstream num(x);
+			int xNum = 0;
+			num >> xNum;*/
+
+			double xNum = stof(x);
+			double yNum = stof(y);
+			double zNum = stof(z);
+			int ONum = stoi(O);
+
+			array[i].setx(xNum);
+			array[i].sety(yNum);
+			array[i].setz(zNum);
+			array[i].setOrientation(ONum);
+
+			i++;
+			countTraining++;
+		}
+
+
+		fin.close();
+
+		return countTraining;
+	}
+	else
+	{
+		cout << "Cannot open " << filename << endl;
+	}
+}
+
+int loadOther(string filenameTesting, Points arrayTesting[])
+{
+	ifstream fin;
+
+
+	int countTesting = 0;
+	fin.open(filenameTesting);
+	if (fin.is_open())
+	{
+		int i = 0;
+
+		while (!fin.eof())
+		{
+			string line;
+			getline(fin, line);
+			string x;
+			istringstream isLine(line);
+			getline(isLine, x, ',');
+
+			string y;
+
+			getline(isLine, y, ',');
+
+			string z;
+
+			getline(isLine, z, ',');
+
+			string O;
+
+			getline(isLine, O, ',');
+
+
+			/*stringstream num(x);
+			int xNum = 0;
+			num >> xNum;*/
+
+			double xNum = stof(x);
+			double yNum = stof(y);
+			double zNum = stof(z);
+			//int ONum = stoi(O);
+
+			arrayTesting[i].setx(xNum);
+			arrayTesting[i].sety(yNum);
+			arrayTesting[i].setz(zNum);
+			arrayTesting[i].setOrientation(-1);
+
+			i++;
+			countTesting++;
+		}
+		fin.close();
+
+		return countTesting;
+	}
+	else
+	{
+		cout << "Cannot open " << filenameTesting << endl;
+	}
+}
+
+void printData(Points array[], int count)
+{
+	for (int i = 0; i < count; i++)
+	{
+		cout << array[i].getx() << ", " << array[i].gety() << ", " << array[i].getz() << ", " << array[i].getOrientation() << endl;
+	}
+}
+

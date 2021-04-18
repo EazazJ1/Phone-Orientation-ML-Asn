@@ -3,6 +3,10 @@
 #include <iostream>
 #include <math.h>
 #include <algorithm>
+#include <fstream>
+#include <sstream>
+
+#define NUM_CHOICES 6
 
 using namespace std;
 
@@ -18,7 +22,7 @@ class Points
 public:
 	Points();	
 
-	Points(double x, double y, double z, int orientation);
+	Points(double x, double y, double z, int orientation, int distance);
 
 	double getx();
 
@@ -40,6 +44,10 @@ public:
 
 	void setOrientation(int orientation);
 
+	void printSingle();
+
+	//void printData(int count);
+
 	//friend ifstream& operator >>(ifstream& fin, Points p);
 };
 
@@ -56,3 +64,9 @@ public:
 bool comparison(Points a, Points b);
 
 void nearestNeighbour(Points array[], Points* p, int k, int count);
+
+int loadTraining(string filename, Points array[]);
+
+int loadOther(string filenameTesting, Points arrayTesting[]);
+
+void printData(Points array[], int count);
