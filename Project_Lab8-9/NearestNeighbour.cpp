@@ -71,7 +71,7 @@ void Points::setOrientation(int orientation)
 
 void Points::printSingle()
 {
-	cout << this->getx() << ", " << this->gety() << ", " << this->getz() << ", " << this->getOrientation() << endl;
+	cout << "\n" << this->getx() << ", " << this->gety() << ", " << this->getz() << ", " << this->getOrientation() << endl;
 }
 
 bool comparison(Points a, Points b)

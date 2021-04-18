@@ -21,16 +21,7 @@ int main()
 	string filename = "trainingData.txt";	
 
 	int countTraining = loadTraining(filename, array);
-	
-
-	//for (int i = 0; i < count; i++)
-	//{
-	//	cout << array[i].getx() << ", " << array[i].gety() << ", " << array[i].getz() << ", " << array[i].getOrientation() << endl;
-	//}
-
-	//cout << "\n\n\n\n\n\n\n\n\n\n";
-
-
+		
 
 	//Testing Data
 
@@ -41,14 +32,6 @@ int main()
 	int countTesting = loadOther(filenameTesting, arrayTesting);
 
 
-	/*for (int i = 0; i < count; i++)
-	{
-		cout << arrayTesting[i].getx() << ", " << arrayTesting[i].gety() << ", " << arrayTesting[i].getz() << ", " << arrayTesting[i].getOrientation() << endl;
-	}*/
-
-
-	//cout << "\n\n\n\n\n\n\n\n\n\n";
-
 	//Unknown Data
 
 	Points arrayUnknown[250];
@@ -58,17 +41,11 @@ int main()
 	int countUnknown = loadOther(filenameUnknown, arrayUnknown);
 
 
-	/*for (int i = 0; i < count; i++)
-	{
-		cout << arrayUnknown[i].getx() << ", " << arrayUnknown[i].gety() << ", " << arrayUnknown[i].getz() << ", " << arrayUnknown[i].getOrientation() << endl;
-	}*/
 	
+	//Tests
 
-	cout << "Before checking what orientation:" << endl;
-	/*for (int i = 0; i < countUnknown; i++)
-	{
-		cout << arrayUnknown[i].getx() << ", " << arrayUnknown[i].gety() << ", " << arrayUnknown[i].getz() << ", " << arrayUnknown[i].getOrientation() << endl;
-	}*/
+	/*cout << "Before checking what orientation:\n" << endl;
+	
 	printData(arrayUnknown, countUnknown);
 
 
@@ -80,15 +57,35 @@ int main()
 
 	cout << "\n\n\n\n\After checking what orientation:\n" << endl;
 	
-	printData(arrayUnknown, countUnknown);
+	printData(arrayUnknown, countUnknown);*/
 
-	/*for (int i = 0; i < countUnknown; i++)
-	{
-		cout << arrayUnknown[i].getx() << ", " << arrayUnknown[i].gety() << ", " << arrayUnknown[i].getz() << ", " << arrayUnknown[i].getOrientation() << endl;
-	}*/
+	double x;
+	double y;
+	double z;
 
+	Points temp;
+
+	cout << "Please enter the Value for the x coordinate: ";
+
+	cin >> x;
+
+	temp.setx(x);
+
+	cout << "Please enter the Value for the y coordinate: ";
+
+	cin >> y;
+
+	temp.sety(y);
+
+	cout << "Please enter the Value for the z coordinate: ";
+
+	cin >> z;
+
+	temp.setz(z);
 	
-	//nearestNeighbour(array, arrayTesting[7], 7);
+	nearestNeighbour(array, &temp, 7, countTraining);
+
+	temp.printSingle();
 
 	return 0;
 }
