@@ -1,35 +1,42 @@
 #pragma once
 
 #include <iostream>
+#include <math.h>
+#include <algorithm>
 
 using namespace std;
 
 
 class Points
 {
-	float x;
-	float y;
-	float z;
+	double x;
+	double y;
+	double z;
 	int orientation;
+	double distance;
 
 public:
 	Points();	
 
-	Points(float x, float y, float z, int orientation);
+	Points(double x, double y, double z, int orientation);
 
-	float getx();
+	double getx();
 
-	float gety();
+	double gety();
 
-	float getz();
+	double getz();
+
+	double getDistance();
 
 	int getOrientation();
 
-	void setx(float x);
+	void setx(double x);
 
-	void sety(float y);
+	void sety(double y);
 
-	void setz(float z);
+	void setz(double z);
+
+	void setDistance(double distance);
 
 	void setOrientation(int orientation);
 
@@ -45,3 +52,7 @@ public:
 //
 //	return fin;
 //}
+
+bool comparison(Points a, Points b);
+
+void nearestNeighbour(Points array[], Points* p, int k, int count);
