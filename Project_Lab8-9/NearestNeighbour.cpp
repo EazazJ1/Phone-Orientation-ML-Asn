@@ -9,7 +9,7 @@ Points::Points()
 	this->orientation = 0;
 }
 
-Points::Points(int x, int y, int z, int orientation)
+Points::Points(float x, float y, float z, int orientation)
 {
 	this->x = x;
 	this->y = y;
@@ -17,17 +17,17 @@ Points::Points(int x, int y, int z, int orientation)
 	this->orientation = orientation;
 }
 
-int Points:: getx()
+float Points:: getx()
 {
 	return this->x;
 }
 
-int Points:: gety()
+float Points:: gety()
 {
 	return this->y;
 }
 
-int Points:: getz()
+float Points:: getz()
 {
 	return this->z;
 }
@@ -37,17 +37,17 @@ int Points:: getOrientation()
 	return this->orientation;
 }
 
-void Points::setx(int x)
+void Points::setx(float x)
 {
 	this->x = x;
 }
 
-void Points::sety(int y)
+void Points::sety(float y)
 {
 	this->y = y;
 }
 
-void Points::setz(int z)
+void Points::setz(float z)
 {
 	this->z = z;
 }

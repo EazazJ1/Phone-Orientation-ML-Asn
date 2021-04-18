@@ -53,8 +53,8 @@ int main()
 			num >> xNum;*/
 
 			float xNum = stof(x);
-			double yNum = stoi(y);
-			double zNum = stoi(z);
+			double yNum = stof(y);
+			double zNum = stof(z);
 			int ONum = stoi(O);
 
 			array[i].setx(xNum);

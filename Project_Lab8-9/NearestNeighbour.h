@@ -7,29 +7,29 @@ using namespace std;
 
 class Points
 {
-	int x;
-	int y;
-	int z;
+	float x;
+	float y;
+	float z;
 	int orientation;
 
 public:
 	Points();	
 
-	Points(int x, int y, int z, int orientation);	
+	Points(float x, float y, float z, int orientation);
 
-	int getx();	
+	float getx();
 
-	int gety();	
+	float gety();
 
-	int getz();	
+	float getz();
 
-	int getOrientation();	
+	int getOrientation();
 
-	void setx(int x);
+	void setx(float x);
 
-	void sety(int y);
+	void sety(float y);
 
-	void setz(int z);
+	void setz(float z);
 
 	void setOrientation(int orientation);
 
