@@ -44,22 +44,26 @@ int main()
 	
 	//Tests
 
-	/*cout << "Before checking what orientation:\n" << endl;
+	cout << "Before checking what orientation:\n" << endl;
 	
 	printData(arrayUnknown, countUnknown);
 
 
 	for (int i = 0; i < countUnknown; i++)
 	{
-		nearestNeighbour(array, &arrayUnknown[i], 7, countTraining);
+		arrayUnknown[i].nearestNeighbourSimple(array, 7, countTraining);
 	}
 
 
 	cout << "\n\n\n\n\After checking what orientation:\n" << endl;
 	
-	printData(arrayUnknown, countUnknown);*/
+	printData(arrayUnknown, countUnknown);
 
-	double x;
+
+
+	//Self Enter
+
+	/*double x;
 	double y;
 	double z;
 
@@ -85,7 +89,7 @@ int main()
 	
 	nearestNeighbour(array, &temp, 7, countTraining);
 
-	temp.printSingle();
+	temp.printSingle();*/
 
 	return 0;
 }

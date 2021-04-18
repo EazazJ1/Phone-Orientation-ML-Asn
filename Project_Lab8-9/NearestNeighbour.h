@@ -46,6 +46,8 @@ public:
 
 	void printSingle();
 
+	void nearestNeighbourSimple(Points array[], int k, int count);
+
 	//void printData(int count);
 
 	//friend ifstream& operator >>(ifstream& fin, Points p);
