@@ -16,11 +16,11 @@ using namespace std;
 
 int main()
 {
-	Points array[200];
+	Points arrayTraining[200];
 	
 	string filename = "trainingData.txt";	
 
-	int countTraining = loadTraining(filename, array);
+	int countTraining = loadTraining(filename, arrayTraining);
 		
 
 	//Testing Data
@@ -46,18 +46,28 @@ int main()
 
 	cout << "Before checking what orientation:\n" << endl;
 	
-	printData(arrayUnknown, countUnknown);
+	//printData(arrayUnknown, countUnknown);
+
+	for (int i = 0; i < countUnknown; i++)
+	{
+		arrayUnknown[i].printSingle();
+	}
 
 
 	for (int i = 0; i < countUnknown; i++)
 	{
-		arrayUnknown[i].nearestNeighbourSimple(array, 7, countTraining);
+		arrayUnknown[i].nearestNeighbourSimple(arrayTraining, countTraining);
 	}
 
 
 	cout << "\n\n\n\n\After checking what orientation:\n" << endl;
 	
-	printData(arrayUnknown, countUnknown);
+	//printData(arrayUnknown, countUnknown);
+
+	for (int i = 0; i < countUnknown; i++)
+	{
+		arrayUnknown[i].printSingle();
+	}
 
 
 
