@@ -11,7 +11,7 @@
 using namespace std;
 
 
-class Points
+class NNclassifier
 {
 	double x;
 	double y;
@@ -20,9 +20,9 @@ class Points
 	double distance;
 
 public:
-	Points();	
+	NNclassifier();	
 
-	Points(double x, double y, double z, int orientation, int distance);
+	NNclassifier(double x, double y, double z, int orientation, int distance);
 
 	double getx();
 
@@ -46,7 +46,11 @@ public:
 
 	void printSingle();
 
-	void nearestNeighbourSimple(Points array[], int count);
+	void nearestNeighbourSimple(NNclassifier array[], int count);
+
+	int loadTraining(string filename);
+
+	int loadOther(string filenameTesting);
 
 	//void printData(int count);
 
@@ -54,12 +58,12 @@ public:
 
 
 
-bool comparison(Points a, Points b);
+bool comparison(NNclassifier a, NNclassifier b);
 
 //void nearestNeighbour(Points array[], Points* p, int k, int count);
 
-int loadTraining(string filename, Points array[]);
+//int loadTraining(string filename, NNclassifier array[]);
 
-int loadOther(string filenameTesting, Points arrayTesting[]);
+//int loadOther(string filenameTesting, NNclassifier arrayTesting[]);
 
-void printData(Points array[], int count);		//dont really need this
+void printData(NNclassifier array[], int count);		//dont really need this

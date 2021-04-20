@@ -16,29 +16,29 @@ using namespace std;
 
 int main()
 {
-	Points arrayTraining[200];
+	NNclassifier arrayTraining[200];
 	
 	string filename = "trainingData.txt";	
 
-	int countTraining = loadTraining(filename, arrayTraining);
+	int countTraining = arrayTraining->loadTraining(filename);
 		
 
 	//Testing Data
 
-	Points arrayTesting[250];
+	NNclassifier arrayTesting[250];
 
 	string filenameTesting = "testingData.txt";	
 
-	int countTesting = loadOther(filenameTesting, arrayTesting);
+	int countTesting = arrayTesting->loadOther(filenameTesting);
 
 
 	//Unknown Data
 
-	Points arrayUnknown[250];
+	NNclassifier arrayUnknown[250];
 
 	string filenameUnknown = "unknownData.txt";
 
-	int countUnknown = loadOther(filenameUnknown, arrayUnknown);
+	int countUnknown = arrayUnknown->loadOther(filenameUnknown);
 
 
 	
@@ -48,15 +48,15 @@ int main()
 	
 	//printData(arrayUnknown, countUnknown);
 
-	for (int i = 0; i < countUnknown; i++)
+	for (int i = 0; i < countTesting; i++)
 	{
-		arrayUnknown[i].printSingle();
+		arrayTesting[i].printSingle();
 	}
 
 
-	for (int i = 0; i < countUnknown; i++)
+	for (int i = 0; i < countTesting; i++)
 	{
-		arrayUnknown[i].nearestNeighbourSimple(arrayTraining, countTraining);
+		arrayTesting[i].nearestNeighbourSimple(arrayTraining, countTraining);
 	}
 
 
@@ -64,42 +64,42 @@ int main()
 	
 	//printData(arrayUnknown, countUnknown);
 
-	for (int i = 0; i < countUnknown; i++)
+	for (int i = 0; i < countTesting; i++)
 	{
-		arrayUnknown[i].printSingle();
+		arrayTesting[i].printSingle();
 	}
 
 
 
 	//Self Enter
 
-	/*double x;
-	double y;
-	double z;
+	//double x;
+	//double y;
+	//double z;
 
-	Points temp;
+	//NNclassifier temp;
 
-	cout << "Please enter the Value for the x coordinate: ";
+	//cout << "Please enter the Value for the x coordinate: ";
 
-	cin >> x;
+	//cin >> x;
 
-	temp.setx(x);
+	//temp.setx(x);
 
-	cout << "Please enter the Value for the y coordinate: ";
+	//cout << "Please enter the Value for the y coordinate: ";
 
-	cin >> y;
+	//cin >> y;
 
-	temp.sety(y);
+	//temp.sety(y);
 
-	cout << "Please enter the Value for the z coordinate: ";
+	//cout << "Please enter the Value for the z coordinate: ";
 
-	cin >> z;
+	//cin >> z;
 
-	temp.setz(z);
-	
-	nearestNeighbour(array, &temp, 7, countTraining);
+	//temp.setz(z);
+	//
+	//temp.nearestNeighbourSimple(arrayTraining, countTraining);
 
-	temp.printSingle();*/
+	//temp.printSingle();
 
 	return 0;
 }

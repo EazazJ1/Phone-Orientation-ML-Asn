@@ -1,7 +1,7 @@
 
 #include "NearestNeighbour.h"
 
-Points::Points()
+NNclassifier::NNclassifier()
 {
 	this->x = 0;
 	this->y = 0;
@@ -10,7 +10,7 @@ Points::Points()
 	this->distance = 0;
 }
 
-Points::Points(double x, double y, double z, int orientation, int distance)
+NNclassifier::NNclassifier(double x, double y, double z, int orientation, int distance)
 {
 	this->x = x;
 	this->y = y;
@@ -19,62 +19,62 @@ Points::Points(double x, double y, double z, int orientation, int distance)
 	this->distance = distance;
 }
 
-double Points::getx()
+double NNclassifier::getx()
 {
 	return this->x;
 }
 
-double Points::gety()
+double NNclassifier::gety()
 {
 	return this->y;
 }
 
-double Points::getz()
+double NNclassifier::getz()
 {
 	return this->z;
 }
 
-double Points::getDistance()
+double NNclassifier::getDistance()
 {
 	return this->distance;
 }
 
-int Points::getOrientation()
+int NNclassifier::getOrientation()
 {
 	return this->orientation;
 }
 
-void Points::setx(double x)
+void NNclassifier::setx(double x)
 {
 	this->x = x;
 }
 
-void Points::sety(double y)
+void NNclassifier::sety(double y)
 {
 	this->y = y;
 }
 
-void Points::setz(double z)
+void NNclassifier::setz(double z)
 {
 	this->z = z;
 }
 
-void Points::setDistance(double distance)
+void NNclassifier::setDistance(double distance)
 {
 	this->distance = distance;
 }
 
-void Points::setOrientation(int orientation)
+void NNclassifier::setOrientation(int orientation)
 {
 	this->orientation = orientation;
 }
 
-void Points::printSingle()
+void NNclassifier::printSingle()
 {
 	cout << this->getx() << ", " << this->gety() << ", " << this->getz() << ", " << this->getOrientation() << endl;
 }
 
-bool comparison(Points a, Points b)
+bool comparison(NNclassifier a, NNclassifier b)
 {
 	return (a.getDistance() < b.getDistance());
 }
@@ -167,125 +167,125 @@ bool comparison(Points a, Points b)
 //
 //}
 
-int loadTraining(string filename, Points array[])
-{
-	ifstream fin;
-	int countTraining = 0;
-	fin.open(filename);
-	if (fin.is_open())
-	{
-		int i = 0;
+//int loadTraining(string filename, NNclassifier array[])
+//{
+//	ifstream fin;
+//	int countTraining = 0;
+//	fin.open(filename);
+//	if (fin.is_open())
+//	{
+//		int i = 0;
+//
+//		while (!fin.eof())
+//		{
+//			string line;
+//			getline(fin, line);
+//			string x;
+//			istringstream isLine(line);
+//			getline(isLine, x, ',');
+//
+//			string y;
+//
+//			getline(isLine, y, ',');
+//
+//			string z;
+//
+//			getline(isLine, z, ',');
+//
+//			string O;
+//
+//			getline(isLine, O, ',');
+//
+//
+//			/*stringstream num(x);
+//			int xNum = 0;
+//			num >> xNum;*/
+//
+//			double xNum = stof(x);
+//			double yNum = stof(y);
+//			double zNum = stof(z);
+//			int ONum = stoi(O);
+//
+//			array[i].setx(xNum);
+//			array[i].sety(yNum);
+//			array[i].setz(zNum);
+//			array[i].setOrientation(ONum);
+//
+//			i++;
+//			countTraining++;
+//		}
+//
+//
+//		fin.close();
+//
+//		return countTraining;
+//	}
+//	else
+//	{
+//		cout << "Cannot open " << filename << endl;
+//	}
+//}
 
-		while (!fin.eof())
-		{
-			string line;
-			getline(fin, line);
-			string x;
-			istringstream isLine(line);
-			getline(isLine, x, ',');
+//int loadOther(string filenameTesting, NNclassifier arrayTesting[])
+//{
+//	ifstream fin;
+//
+//
+//	int countTesting = 0;
+//	fin.open(filenameTesting);
+//	if (fin.is_open())
+//	{
+//		int i = 0;
+//
+//		while (!fin.eof())
+//		{
+//			string line;
+//			getline(fin, line);
+//			string x;
+//			istringstream isLine(line);
+//			getline(isLine, x, ',');
+//
+//			string y;
+//
+//			getline(isLine, y, ',');
+//
+//			string z;
+//
+//			getline(isLine, z, ',');
+//
+//			string O;
+//
+//			getline(isLine, O, ',');
+//
+//
+//			/*stringstream num(x);
+//			int xNum = 0;
+//			num >> xNum;*/
+//
+//			double xNum = stof(x);
+//			double yNum = stof(y);
+//			double zNum = stof(z);
+//			//int ONum = stoi(O);
+//
+//			arrayTesting[i].setx(xNum);
+//			arrayTesting[i].sety(yNum);
+//			arrayTesting[i].setz(zNum);
+//			arrayTesting[i].setOrientation(-1);
+//
+//			i++;
+//			countTesting++;
+//		}
+//		fin.close();
+//
+//		return countTesting;
+//	}
+//	else
+//	{
+//		cout << "Cannot open " << filenameTesting << endl;
+//	}
+//}
 
-			string y;
-
-			getline(isLine, y, ',');
-
-			string z;
-
-			getline(isLine, z, ',');
-
-			string O;
-
-			getline(isLine, O, ',');
-
-
-			/*stringstream num(x);
-			int xNum = 0;
-			num >> xNum;*/
-
-			double xNum = stof(x);
-			double yNum = stof(y);
-			double zNum = stof(z);
-			int ONum = stoi(O);
-
-			array[i].setx(xNum);
-			array[i].sety(yNum);
-			array[i].setz(zNum);
-			array[i].setOrientation(ONum);
-
-			i++;
-			countTraining++;
-		}
-
-
-		fin.close();
-
-		return countTraining;
-	}
-	else
-	{
-		cout << "Cannot open " << filename << endl;
-	}
-}
-
-int loadOther(string filenameTesting, Points arrayTesting[])
-{
-	ifstream fin;
-
-
-	int countTesting = 0;
-	fin.open(filenameTesting);
-	if (fin.is_open())
-	{
-		int i = 0;
-
-		while (!fin.eof())
-		{
-			string line;
-			getline(fin, line);
-			string x;
-			istringstream isLine(line);
-			getline(isLine, x, ',');
-
-			string y;
-
-			getline(isLine, y, ',');
-
-			string z;
-
-			getline(isLine, z, ',');
-
-			string O;
-
-			getline(isLine, O, ',');
-
-
-			/*stringstream num(x);
-			int xNum = 0;
-			num >> xNum;*/
-
-			double xNum = stof(x);
-			double yNum = stof(y);
-			double zNum = stof(z);
-			//int ONum = stoi(O);
-
-			arrayTesting[i].setx(xNum);
-			arrayTesting[i].sety(yNum);
-			arrayTesting[i].setz(zNum);
-			arrayTesting[i].setOrientation(-1);
-
-			i++;
-			countTesting++;
-		}
-		fin.close();
-
-		return countTesting;
-	}
-	else
-	{
-		cout << "Cannot open " << filenameTesting << endl;
-	}
-}
-
-void printData(Points array[], int count)
+void printData(NNclassifier array[], int count)
 {
 	for (int i = 0; i < count; i++)
 	{
@@ -294,7 +294,7 @@ void printData(Points array[], int count)
 }
 
 
-void Points::nearestNeighbourSimple(Points array[], int count)
+void NNclassifier::nearestNeighbourSimple(NNclassifier array[], int count)
 {
 
 	for (int i = 0; i < count; i++)
@@ -341,4 +341,124 @@ void Points::nearestNeighbourSimple(Points array[], int count)
 	}
 
 
+}
+
+
+int NNclassifier::loadTraining(string filename)
+{
+	ifstream fin;
+	int countTraining = 0;
+	fin.open(filename);
+	if (fin.is_open())
+	{
+		int i = 0;
+
+		while (!fin.eof())
+		{
+			string line;
+			getline(fin, line);
+			string x;
+			istringstream isLine(line);
+			getline(isLine, x, ',');
+
+			string y;
+
+			getline(isLine, y, ',');
+
+			string z;
+
+			getline(isLine, z, ',');
+
+			string O;
+
+			getline(isLine, O, ',');
+
+
+			/*stringstream num(x);
+			int xNum = 0;
+			num >> xNum;*/
+
+			double xNum = stof(x);
+			double yNum = stof(y);
+			double zNum = stof(z);
+			int ONum = stoi(O);
+
+			this[i].setx(xNum);
+			this[i].sety(yNum);
+			this[i].setz(zNum);
+			this[i].setOrientation(ONum);
+
+			i++;
+			countTraining++;
+		}
+
+
+		fin.close();
+
+		return countTraining;
+	}
+	else
+	{
+		cout << "Cannot open " << filename << endl;
+	}
+}
+
+
+int NNclassifier::loadOther(string filenameTesting)
+{
+	ifstream fin;
+
+
+	int countTesting = 0;
+	fin.open(filenameTesting);
+	if (fin.is_open())
+	{
+		int i = 0;
+
+		while (!fin.eof())
+		{
+			string line;
+			getline(fin, line);
+			string x;
+			istringstream isLine(line);
+			getline(isLine, x, ',');
+
+			string y;
+
+			getline(isLine, y, ',');
+
+			string z;
+
+			getline(isLine, z, ',');
+
+			string O;
+
+			getline(isLine, O, ',');
+
+
+			/*stringstream num(x);
+			int xNum = 0;
+			num >> xNum;*/
+
+			double xNum = stof(x);
+			double yNum = stof(y);
+			double zNum = stof(z);
+			//int ONum = stoi(O);
+
+			this[i].setx(xNum);
+			this[i].sety(yNum);
+			this[i].setz(zNum);
+			this[i].setOrientation(-1);
+
+			i++;
+			countTesting++;
+		}
+		fin.close();
+
+		return countTesting;
+	}
+	else
+	{
+		cout << "Cannot open " << filenameTesting << endl;
+	}
 }
