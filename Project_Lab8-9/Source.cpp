@@ -23,83 +23,83 @@ int main()
 	int countTraining = arrayTraining->loadTraining(filename);
 		
 
-	//Testing Data
+	////Testing Data
 
-	NNclassifier arrayTesting[250];
+	//NNclassifier arrayTesting[250];
 
-	string filenameTesting = "testingData.txt";	
+	//string filenameTesting = "testingData.txt";	
 
-	int countTesting = arrayTesting->loadOther(filenameTesting);
-
-
-	//Unknown Data
-
-	NNclassifier arrayUnknown[250];
-
-	string filenameUnknown = "unknownData.txt";
-
-	int countUnknown = arrayUnknown->loadOther(filenameUnknown);
+	//int countTesting = arrayTesting->loadOther(filenameTesting);
 
 
-	
-	//Tests
+	////Unknown Data
 
-	cout << "Before checking what orientation:\n" << endl;
-	
-	//printData(arrayUnknown, countUnknown);
+	//NNclassifier arrayUnknown[250];
 
-	for (int i = 0; i < countTesting; i++)
-	{
-		arrayTesting[i].printSingle();
-	}
+	//string filenameUnknown = "unknownData.txt";
+
+	//int countUnknown = arrayUnknown->loadOther(filenameUnknown);
 
 
-	for (int i = 0; i < countTesting; i++)
-	{
-		arrayTesting[i].nearestNeighbourSimple(arrayTraining, countTraining);
-	}
+	//
+	////Tests
+
+	//cout << "Before checking what orientation:\n" << endl;
+	//
+	////printData(arrayUnknown, countUnknown);
+
+	//for (int i = 0; i < countTesting; i++)
+	//{
+	//	arrayTesting[i].printSingle();
+	//}
 
 
-	cout << "\n\n\n\n\After checking what orientation:\n" << endl;
-	
-	//printData(arrayUnknown, countUnknown);
+	//for (int i = 0; i < countTesting; i++)
+	//{
+	//	arrayTesting[i].findNearestNeighbour(arrayTraining, countTraining);
+	//}
 
-	for (int i = 0; i < countTesting; i++)
-	{
-		arrayTesting[i].printSingle();
-	}
+
+	//cout << "\n\n\n\n\After checking what orientation:\n" << endl;
+	//
+	////printData(arrayUnknown, countUnknown);
+
+	//for (int i = 0; i < countTesting; i++)
+	//{
+	//	arrayTesting[i].printSingle();
+	//}
 
 
 
 	//Self Enter
 
-	//double x;
-	//double y;
-	//double z;
+	double x;
+	double y;
+	double z;
 
-	//NNclassifier temp;
+	NNclassifier temp;
 
-	//cout << "Please enter the Value for the x coordinate: ";
+	cout << "Please enter the Value for the x coordinate: ";
 
-	//cin >> x;
+	cin >> x;
 
-	//temp.setx(x);
+	temp.setx(x);
 
-	//cout << "Please enter the Value for the y coordinate: ";
+	cout << "Please enter the Value for the y coordinate: ";
 
-	//cin >> y;
+	cin >> y;
 
-	//temp.sety(y);
+	temp.sety(y);
 
-	//cout << "Please enter the Value for the z coordinate: ";
+	cout << "Please enter the Value for the z coordinate: ";
 
-	//cin >> z;
+	cin >> z;
 
-	//temp.setz(z);
-	//
-	//temp.nearestNeighbourSimple(arrayTraining, countTraining);
+	temp.setz(z);
+	
+	temp.findNearestNeighbour(arrayTraining, countTraining);
 
-	//temp.printSingle();
+	temp.printSingle();
 
 	return 0;
 }
