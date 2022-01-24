@@ -3,6 +3,7 @@ Machine Learning using Nearest Neighbour Algorithm<br /><br />
 
 Implemented a machine learning algorithm that determines the orientation of the phone.<br />
 Achieved this by using the Nearest Neighbour Algorithm.<br />
+Also documented the code using Doxygen.
 
 # Languages
 - C++
